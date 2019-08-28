@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TheSwitcher</string>
+    <string name="title_main">Switcher App</string>
+    <string name="desc_light_status">Light status</string>
+    <string name="txt_division">Your %1$s light is</string>
+    <string name="status_on">On</string>
+    <string name="status_off">Off</string>
 </resources>

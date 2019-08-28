@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/switchListFragment">
+
+    <fragment
+        android:id="@+id/switchListFragment"
+        android:name="com.maicondcastro.theswitcher.view.SwitchListFragment"
+        android:label="SwitchListFragment">
+        <action
+            android:id="@+id/action_switchListFragment_to_switchDetailFragment"
+            app:destination="@id/switchDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/switchDetailFragment"
+        android:name="com.maicondcastro.theswitcher.view.SwitchDetailFragment"
+        android:label="SwitchDetailFragment" >
+        <argument
+            android:name="division"
+            app:argType="com.maicondcastro.theswitcher.model.Division" />
+    </fragment>
+</navigation>
