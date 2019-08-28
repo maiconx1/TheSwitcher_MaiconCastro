@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -18,6 +19,7 @@ import com.maicondcastro.theswitcher.activity.MainActivity;
 import com.maicondcastro.theswitcher.adapter.SwitchListAdapter;
 import com.maicondcastro.theswitcher.databinding.SwitchListFragmentBinding;
 import com.maicondcastro.theswitcher.model.Division;
+import com.maicondcastro.theswitcher.util.Singleton;
 import com.maicondcastro.theswitcher.viewmodel.SwitchListViewModel;
 
 import java.util.ArrayList;
@@ -29,7 +31,11 @@ public class SwitchListFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        viewModel.setup(NavHostFragment.findNavController(this));
+        NavController nav = null;
+        if(!getResources().getBoolean(R.bool.isTablet)) {
+            nav = NavHostFragment.findNavController(this);
+        }
+        viewModel.setup(nav);
     }
 
     @Override
@@ -40,10 +46,6 @@ public class SwitchListFragment extends Fragment {
         binding.setViewModel(viewModel);
         binding.recyclerView.setAdapter(new SwitchListAdapter(new ArrayList<Division>(), viewModel));
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        if(MainActivity.actionBar != null) {
-            MainActivity.actionBar.setTitle(getString(R.string.title_main));
-            MainActivity.actionBar.setDisplayHomeAsUpEnabled(false);
-        }
         return binding.getRoot();
     }
 

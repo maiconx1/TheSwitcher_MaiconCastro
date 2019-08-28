@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.maicondcastro.theswitcher.activity.MainActivity;
+import com.maicondcastro.theswitcher.R;
 import com.maicondcastro.theswitcher.databinding.SwitchDetailFragmentBinding;
 import com.maicondcastro.theswitcher.util.Singleton;
 import com.maicondcastro.theswitcher.viewmodel.SwitchDetailViewModel;
@@ -22,7 +22,6 @@ public class SwitchDetailFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        viewModel.load();
     }
 
     @Override
@@ -36,9 +35,16 @@ public class SwitchDetailFragment extends Fragment {
         SwitchDetailFragmentBinding binding = SwitchDetailFragmentBinding.inflate(inflater, container, false);
         viewModel = ViewModelProviders.of(this).get(SwitchDetailViewModel.class);
         binding.setViewModel(viewModel);
-        if(MainActivity.actionBar != null) {
-            MainActivity.actionBar.setTitle(Singleton.getInstance().getDivision().getName());
-            MainActivity.actionBar.setDisplayHomeAsUpEnabled(true);
+        if(!getResources().getBoolean(R.bool.isTablet)) {
+            binding.toolbar.setNavigationIcon(viewModel.backIcon);
+            binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getActivity() != null) {
+                        getActivity().onBackPressed();
+                    }
+                }
+            });
         }
         return binding.getRoot();
     }

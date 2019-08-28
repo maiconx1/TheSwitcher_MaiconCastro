@@ -4,15 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Division implements Parcelable {
+    private int id;
     private String name;
     private boolean active;
 
-    public Division(String name, boolean active) {
+    public Division(int id, String name, boolean active) {
+        this.id = id;
         this.name = name;
         this.active = active;
     }
 
     protected Division(Parcel in) {
+        id = in.readInt();
         name = in.readString();
         active = in.readByte() != 0;
     }
@@ -28,6 +31,14 @@ public class Division implements Parcelable {
             return new Division[size];
         }
     };
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -52,6 +63,7 @@ public class Division implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(name);
         dest.writeByte((byte) (active ? 1 : 0));
     }

@@ -1,14 +1,16 @@
 package com.maicondcastro.theswitcher.util;
 
+import androidx.databinding.ObservableField;
+
 import com.maicondcastro.theswitcher.model.Division;
 
 public class Singleton {
 
-    private Division division;
+    private boolean tablet;
     private static Singleton instance = null;
 
     private Singleton() {
-        division = new Division("", false);
+        tablet = false;
     }
 
     public static Singleton getInstance() {
@@ -16,11 +18,11 @@ public class Singleton {
         return instance;
     }
 
-    public Division getDivision() {
-        return division;
+    public boolean isTablet() {
+        return tablet;
     }
 
-    public void setDivision(Division division) {
-        this.division = division;
+    public void setTablet(boolean tablet) {
+        this.tablet = tablet;
     }
 }

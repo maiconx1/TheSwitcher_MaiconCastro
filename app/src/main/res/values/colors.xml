@@ -6,4 +6,5 @@
     <color name="textColor">#333333</color>
     <color name="divisor">#EEEEEE</color>
     <color name="imageBg">#DDDDDD</color>
+    <color name="white">#FFFFFF</color>
 </resources>

@@ -15,9 +15,5 @@
     <fragment
         android:id="@+id/switchDetailFragment"
         android:name="com.maicondcastro.theswitcher.view.SwitchDetailFragment"
-        android:label="SwitchDetailFragment" >
-        <argument
-            android:name="division"
-            app:argType="com.maicondcastro.theswitcher.model.Division" />
-    </fragment>
+        android:label="SwitchDetailFragment" />
 </navigation>

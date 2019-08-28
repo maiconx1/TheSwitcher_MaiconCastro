@@ -7,7 +7,6 @@ import androidx.navigation.NavController;
 import com.maicondcastro.theswitcher.R;
 import com.maicondcastro.theswitcher.adapter.SwitchListAdapter;
 import com.maicondcastro.theswitcher.model.Division;
-import com.maicondcastro.theswitcher.util.Singleton;
 
 public class SwitchListViewModel extends ViewModel implements SwitchListAdapter.SwitchListListener {
 
@@ -18,16 +17,20 @@ public class SwitchListViewModel extends ViewModel implements SwitchListAdapter.
     public void setup(NavController navigation) {
         this.navigation = navigation;
         if(divisions.size() == 0) {
-            divisions.add(new Division("Kitchen", false));
-            divisions.add(new Division("Living room", false));
-            divisions.add(new Division("Master bedroom", false));
-            divisions.add(new Division("Guest's bedroom", false));
+            divisions.add(new Division(1, "Kitchen", false));
+            divisions.add(new Division(2, "Living room", false));
+            divisions.add(new Division(3, "Master bedroom", false));
+            divisions.add(new Division(4, "Guest's bedroom", false));
+            SwitchDetailViewModel.division.set(divisions.get(0));
         }
     }
 
     private void click(Division division) {
-        Singleton.getInstance().setDivision(division);
-        navigation.navigate(R.id.switchDetailFragment);
+        SwitchDetailViewModel.division.set(division);
+        SwitchDetailViewModel.division.notifyChange();
+        if(navigation != null) {
+            navigation.navigate(R.id.switchDetailFragment);
+        }
     }
 
     @Override
@@ -38,5 +41,10 @@ public class SwitchListViewModel extends ViewModel implements SwitchListAdapter.
     @Override
     public void onCheck(Division division) {
         divisions.set(divisions.indexOf(division), division);
+        Division d = SwitchDetailViewModel.division.get();
+        if(d != null && d.getId() == division.getId()) {
+            SwitchDetailViewModel.division.set(division);
+            SwitchDetailViewModel.division.notifyChange();
+        }
     }
 }
