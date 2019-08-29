@@ -58,5 +58,8 @@ public class SwitchListViewModel extends AndroidViewModel implements SwitchListA
     private void initDb() {
         repository = new DivisionRepository(getApplication());
         divisions = repository.getDivisions();
+        if(divisions.size() > 0) {
+            SwitchDetailViewModel.division.set(divisions.get(0));
+        }
     }
 }
