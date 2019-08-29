@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.maicondcastro.theswitcher.R;
 import com.maicondcastro.theswitcher.databinding.SwitchDetailFragmentBinding;
-import com.maicondcastro.theswitcher.util.Singleton;
 import com.maicondcastro.theswitcher.viewmodel.SwitchDetailViewModel;
 
 public class SwitchDetailFragment extends Fragment {

@@ -3,7 +3,12 @@ package com.maicondcastro.theswitcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "Division")
 public class Division implements Parcelable {
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
     private boolean active;

@@ -39,7 +39,6 @@
                 android:contentDescription="@string/desc_light_status"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:src="@drawable/light"
                 app:layout_constraintBottom_toTopOf="@id/guideline"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -51,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/desc_light_status"
-                    android:src="@{viewModel.division.active ? @drawable/light : @drawable/light}" />
+                    android:src="@drawable/light_on" />
             </FrameLayout>
 
             <androidx.constraintlayout.widget.Guideline

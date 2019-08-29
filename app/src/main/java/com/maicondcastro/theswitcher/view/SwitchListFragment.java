@@ -15,11 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.maicondcastro.theswitcher.R;
-import com.maicondcastro.theswitcher.activity.MainActivity;
 import com.maicondcastro.theswitcher.adapter.SwitchListAdapter;
 import com.maicondcastro.theswitcher.databinding.SwitchListFragmentBinding;
 import com.maicondcastro.theswitcher.model.Division;
-import com.maicondcastro.theswitcher.util.Singleton;
 import com.maicondcastro.theswitcher.viewmodel.SwitchListViewModel;
 
 import java.util.ArrayList;
@@ -44,7 +42,8 @@ public class SwitchListFragment extends Fragment {
         SwitchListFragmentBinding binding = SwitchListFragmentBinding.inflate(inflater, container, false);
         viewModel = ViewModelProviders.of(this).get(SwitchListViewModel.class);
         binding.setViewModel(viewModel);
-        binding.recyclerView.setAdapter(new SwitchListAdapter(new ArrayList<Division>(), viewModel));
+        final SwitchListAdapter adapter = new SwitchListAdapter(new ArrayList<Division>(), viewModel);
+        binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return binding.getRoot();
     }

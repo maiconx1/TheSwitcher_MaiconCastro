@@ -45,6 +45,7 @@ public class SwitchListAdapter extends RecyclerView.Adapter<SwitchListAdapter.Vi
 
     private void replaceItems(List<Division> items) {
         divisionList = items;
+        notifyDataSetChanged();
     }
 
     @BindingAdapter("items")
