@@ -43,7 +43,7 @@ public class SwitchListAdapter extends RecyclerView.Adapter<SwitchListAdapter.Vi
         return divisionList.size();
     }
 
-    private void replaceItems(List<Division> items) {
+    public void replaceItems(List<Division> items) {
         divisionList = items;
         notifyDataSetChanged();
     }

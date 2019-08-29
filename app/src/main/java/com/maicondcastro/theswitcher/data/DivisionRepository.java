@@ -36,7 +36,7 @@ public class DivisionRepository {
         return divisions;
     }
 
-    private static class AsyncDb extends AsyncTask<Integer, Integer, Integer> {
+    private class AsyncDb extends AsyncTask<Integer, Integer, Integer> {
 
         static final int INSERT = 0, UPDATE = 1, DELETE = 2;
         private Division division;
@@ -53,12 +53,15 @@ public class DivisionRepository {
                 switch (integers[0]) {
                     case INSERT:
                         dao.insert(division);
+                        divisions.add(division);
                         break;
                     case UPDATE:
                         dao.update(division);
+                        divisions.set(divisions.indexOf(division), division);
                         break;
                     case DELETE:
                         dao.delete(division);
+                        divisions.remove(division);
                         break;
                 }
             }
